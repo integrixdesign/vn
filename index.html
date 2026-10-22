@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Integrix Design Services | Tư vấn thiết kế bồn FRP</title>
+  <meta name="description" content="Integrix Design Services — dịch vụ tư vấn kỹ thuật thiết kế bồn FRP theo ASTM D3299, ASTM D4097, ASME RTP-1." />
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #555555;
+      --line: #e7e7e7;
+      --card: #fafafa;
+      --maxw: 1100px;
+
+      --step--1: clamp(0.90rem, 0.85rem + 0.25vw, 1.00rem);
+      --step-0:  clamp(1.00rem, 0.95rem + 0.35vw, 1.15rem);
+      --step-1:  clamp(1.20rem, 1.05rem + 0.75vw, 1.55rem);
+      --step-2:  clamp(1.50rem, 1.25rem + 1.10vw, 2.10rem);
+      --step-3:  clamp(1.90rem, 1.50rem + 1.80vw, 2.80rem);
+
+      --space-1: clamp(0.50rem, 0.35rem + 0.60vw, 0.90rem);
+      --space-2: clamp(0.80rem, 0.55rem + 0.90vw, 1.30rem);
+      --space-3: clamp(1.10rem, 0.80rem + 1.30vw, 1.90rem);
+      --space-4: clamp(1.60rem, 1.00rem + 2.10vw, 2.80rem);
+
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.07);
+    }
+
+    *{
+      box-sizing: border-box;
+    }
+
+    html{
+      scroll-behavior: smooth;
+    }
+
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      font-size: var(--step-0);
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+    }
+
+    a{
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover{
+      text-decoration: underline;
+    }
+
+    .container{
+      width: min(var(--maxw), calc(100% - 2 * var(--space-3)));
+      margin-inline: auto;
+    }
+
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-2) 0;
+      gap: var(--space-2);
+    }
+
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      min-width: 0;
+    }
+
+    .brand img{
+      height: clamp(42px, 4vw, 62px);
+      width: auto;
+      max-width: 100%;
+      display: block;
+    }
+
+    nav{
+      display: flex;
+      align-items: center;
+      gap: clamp(0.6rem, 0.6rem + 1vw, 1.4rem);
+      font-size: var(--step--1);
+      white-space: nowrap;
+    }
+
+    nav a{
+      padding: 0.55rem 0.75rem;
+      border-radius: 10px;
+    }
+
+    nav a:hover{
+      background: #f3f3f3;
+      text-decoration: none;
+    }
+
+    .menu-btn{
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 12px;
+      padding: 0.55rem 0.75rem;
+      font-size: var(--step--1);
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    @media (max-width: 760px){
+      nav{
+        display: none;
+        position: absolute;
+        right: var(--space-3);
+        top: calc(100% + 0.5rem);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 0.35rem;
+        flex-direction: column;
+        align-items: stretch;
+        min-width: 220px;
+      }
+
+      nav a{
+        padding: 0.75rem 0.9rem;
+      }
+
+      .menu-btn{
+        display: inline-flex;
+      }
+
+      header[data-open="true"] nav{
+        display: flex;
+      }
+    }
+
+    .hero{
+      padding: var(--space-4) 0 var(--space-3);
+    }
+
+    .hero h1{
+      margin: 0;
+      font-size: var(--step-3);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .hero .sub{
+      margin: var(--space-2) auto 0;
+      max-width: 72ch;
+      text-align: center;
+      color: var(--muted);
+      font-size: var(--step-0);
+    }
+
+    .rule{
+      height: 2px;
+      background: var(--line);
+      margin: var(--space-3) auto 0;
+      width: min(520px, 80%);
+      border-radius: 999px;
+    }
+
+    section{
+      padding: var(--space-4) 0;
+      border-top: 1px solid var(--line);
+    }
+
+    section h2{
+      font-size: var(--step-2);
+      margin: 0 0 var(--space-3);
+      letter-spacing: -0.01em;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .two-col{
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--space-4);
+      align-items: start;
+    }
+
+    @media (max-width: 900px){
+      .two-col{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .prose p{
+      margin: 0 0 var(--space-2);
+      max-width: 75ch;
+    }
+
+    .media{
+      border: 1px solid var(--line);
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .media img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .service-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: var(--space-3);
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .card h3{
+      margin: 0 0 0.35rem;
+      font-size: var(--step-1);
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .card p{
+      margin: 0.4rem 0 0;
+      color: var(--muted);
+      font-size: var(--step--1);
+    }
+
+    .quote-grid{
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: var(--space-3);
+      align-items: start;
+    }
+
+    @media (max-width: 900px){
+      .quote-grid{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quote-card,
+    .help-card{
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #ffffff;
+      box-shadow: var(--shadow);
+      padding: var(--space-3);
+    }
+
+    .quote-head{
+      text-align: left;
+      margin-bottom: var(--space-2);
+    }
+
+    .quote-head h3{
+      margin: 0;
+      font-size: var(--step-1);
+      line-height: 1.25;
+    }
+
+    .quote-head p{
+      margin: 0.5rem 0 0;
+      color: var(--muted);
+      font-size: var(--step--1);
+      max-width: 75ch;
+    }
+
+    .btn-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      align-items: center;
+      margin-top: var(--space-2);
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 1.15rem;
+      border-radius: 12px;
+      border: 1px solid #111;
+      background: #111;
+      color: #fff;
+      font-weight: 750;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn:hover{
+      filter: brightness(0.95);
+      text-decoration: none;
+    }
+
+    .btn-secondary{
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .btn-secondary:hover{
+      background: #f4f4f4;
+    }
+
+    .help-card h4{
+      margin: 0 0 0.6rem;
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+
+    .help-list{
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      font-size: var(--step--1);
+    }
+
+    .help-list li{
+      margin: 0.35rem 0;
+    }
+
+    footer{
+      border-top: 1px solid var(--line);
+      padding: var(--space-3) 0;
+      color: var(--muted);
+      font-size: var(--step--1);
+    }
+
+    .footer-inner{
+      display: flex;
+      justify-content: space-between;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    .skip-link{
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 0.6rem 0.8rem;
+      border-radius: 10px;
+      z-index: 1000;
+    }
+
+    .skip-link:focus{
+      left: var(--space-3);
+      top: var(--space-3);
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Chuyển đến nội dung</a>
+
+  <header id="top" data-open="false">
+    <div class="container">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="Về đầu trang">
+          <img src="/Logo.svg" alt="Logo Integrix Design Services" />
+        </a>
+
+        <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="siteNav">
+          Menu
+        </button>
+
+        <nav id="siteNav" aria-label="Điều hướng chính">
+          <a href="#company">Về Chúng Tôi</a>
+          <a href="#services">Dịch Vụ</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Liên Hệ</a>
+          <a href="/">English</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <div class="hero">
+        <h1>Dịch Vụ Tư Vấn Kỹ Thuật Bồn FRP</h1>
+        <p class="sub">Integrix Design Services — từ tính toán đến bản vẽ hoàn chỉnh.</p>
+        <div class="rule" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <section id="company" aria-label="Về Chúng Tôi">
+      <div class="container">
+        <h2>Về Chúng Tôi</h2>
+
+        <div class="prose" style="max-width: 75ch; margin-inline: auto;">
+          <p>
+            Chúng tôi cung cấp dịch vụ tư vấn thiết kế bồn FRP. Chúng tôi có chuyên môn
+            sâu về bồn FRP và đã thiết kế bồn FRP theo các tiêu chuẩn ASTM D3299,
+            ASTM D4097 và ASME RTP-1.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" aria-label="Dịch Vụ">
+      <div class="container">
+        <h2>Dịch Vụ</h2>
+
+        <div class="prose" style="max-width: 75ch; margin-inline: auto;">
+          <p>
+            Chúng tôi có thể hỗ trợ thiết kế bồn FRP từ bản tính toán đến bản vẽ hoàn chỉnh.
+            Chúng tôi cũng có thể hỗ trợ quý công ty trong việc lựa chọn mua bồn FRP.
+          </p>
+        </div>
+
+        <div class="service-grid" role="list" style="margin-top: var(--space-3);">
+          <div class="card" role="listitem">
+            <h3>Thiết kế &amp; tính toán</h3>
+            <p>Bản tính toán thiết kế bồn FRP theo ASTM D3299, ASTM D4097 và ASME RTP-1.</p>
+          </div>
+
+          <div class="card" role="listitem">
+            <h3>Bản vẽ hoàn chỉnh</h3>
+            <p>Hồ sơ bản vẽ đầy đủ, rõ ràng, sẵn sàng cho chế tạo.</p>
+          </div>
+
+          <div class="card" role="listitem">
+            <h3>Tư vấn lựa chọn mua bồn</h3>
+            <p>Hỗ trợ quý công ty trong việc lựa chọn mua bồn FRP.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog" aria-label="Blog">
+      <div class="container">
+        <h2>Blog</h2>
+
+        <div class="card" style="max-width: 640px; margin-inline: auto; text-align: center;">
+          <h3>Sắp ra mắt</h3>
+          <p>Các bài viết kỹ thuật về bồn FRP sẽ được cập nhật tại đây.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-label="Liên Hệ">
+      <div class="container">
+        <h2>Liên Hệ</h2>
+
+        <div class="quote-grid">
+          <div class="quote-card">
+            <div class="quote-head">
+              <h3>Gửi yêu cầu để được báo giá</h3>
+
+              <p>
+                Vui lòng gửi bản vẽ, hình ảnh và các yêu cầu chính của dự án qua biểu mẫu
+                hoặc email để chúng tôi xem xét kỹ thuật và báo giá chính xác.
+                Thời gian phản hồi thông thường trong vòng một ngày làm việc.
+              </p>
+            </div>
+
+            <div class="btn-row">
+              <a
+                class="btn"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSfXCOebPPZ3vUuZmteIdjRGRIL9jmJImoFcCgJzy-XDJ8pXUw/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Mở Biểu Mẫu Báo Giá
+              </a>
+
+              <a
+                class="btn btn-secondary"
+                href="mailto:IntegrixDesignServices@outlook.com?subject=Yeu%20cau%20bao%20gia%20-%20Integrix%20Design%20Services"
+              >
+                Gửi Email
+              </a>
+            </div>
+          </div>
+
+          <div class="help-card" aria-label="Hướng dẫn gửi yêu cầu">
+            <h4>Thông tin giúp chúng tôi báo giá chính xác</h4>
+
+            <ul class="help-list">
+              <li>Bản vẽ tham khảo</li>
+              <li>Bản phác thảo sơ bộ</li>
+              <li>Hình ảnh</li>
+              <li>Thời hạn giao hàng mong muốn</li>
+            </ul>
+
+            <p style="margin-top: var(--space-2); color: var(--muted); font-size: var(--step--1);">
+              Ưu tiên liên hệ qua email?<br />
+              Gửi tệp đến
+              <a href="mailto:IntegrixDesignServices@outlook.com" style="font-weight: 750; text-decoration: underline;">
+                IntegrixDesignServices@outlook.com
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <div>© <span id="year"></span> Integrix Design Services. Bảo lưu mọi quyền.</div>
+          <div><a href="#top">Về đầu trang</a></div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      const header = document.querySelector("header");
+      const btn = document.getElementById("menuBtn");
+      const nav = document.getElementById("siteNav");
+
+      function setOpen(open) {
+        header.setAttribute("data-open", open ? "true" : "false");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      }
+
+      btn.addEventListener("click", function () {
+        const isOpen = header.getAttribute("data-open") === "true";
+        setOpen(!isOpen);
+      });
+
+      nav.addEventListener("click", function (e) {
+        if (e.target && e.target.tagName === "A") {
+          setOpen(false);
+        }
+      });
+
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 760) {
+          setOpen(false);
+        }
+      });
+
+      document.getElementById("year").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
